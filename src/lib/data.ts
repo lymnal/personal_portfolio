@@ -9,11 +9,10 @@ import {
 
 export const navLinks: NavLink[] = [
   { id: "home", label: "Home" },
+  { id: "ideas", label: "Ideas", href: "/ideas" },
   { id: "projects", label: "Projects" },
   { id: "experience", label: "Experience" },
   { id: "education", label: "Education" },
-  { id: "ideas", label: "Ideas", href: "/ideas" },
-  { id: "weather-edge", label: "Weather Edge", href: "/weather-edge" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -21,7 +20,7 @@ export const projects: Project[] = [
   {
     title: "Anchor",
     description:
-      "Shipped a habit-tracking social app to iOS with 26 row-level security policies covering every database table. Real-time messaging, friend system, and on-device TensorFlow.js inference for AI-powered streak insights — all running through Supabase with zero exposed endpoints.",
+      "Shipped a social habit-tracking app to iOS — real-time messaging, friend system, and on-device TensorFlow.js inference for AI-powered streak insights. Every database table locked down with row-level security through Supabase, zero exposed endpoints.",
     tech: [
       "React 19",
       "Supabase",
@@ -29,7 +28,7 @@ export const projects: Project[] = [
       "TensorFlow.js",
       "Framer Motion",
     ],
-    metrics: "26 RLS policies | On-device ML inference | iOS-deployed",
+    metrics: "iOS App Store | On-device ML inference | Real-time sync",
     github: "https://github.com/esamnyu/Habitual",
     demo: "https://anchor.camp",
     image: "/images/anchor-cover.png",
@@ -45,13 +44,6 @@ export const projects: Project[] = [
     github: "https://github.com/esamnyu/slackbot",
     demo: "https://slackbot-puce.vercel.app",
   },
-  {
-    title: "Roomies App",
-    description:
-      "Co-founded a mobile app for roommate coordination with end-to-end encrypted data. Built a consensus-driven AI framework inspired by Waze — LLM-powered task aggregation resolves household conflicts through anonymous proposals.",
-    tech: ["React Native", "Firebase", "AI/ML", "Cryptography"],
-    metrics: "E2E encryption | LLM consensus engine | Anonymous proposals",
-  },
 ];
 
 export const experiences: Experience[] = [
@@ -65,18 +57,6 @@ export const experiences: Experience[] = [
       "Designed push-based agent architecture integrating Slack, Gmail, and Google Calendar",
       "Shipped Account Snapshot, Deal Desk assistant, and Weekly Outlook agents on Glean platform",
       "Pioneered zero-friction deployment model for AI agents across 1,400-person organization",
-    ],
-  },
-  {
-    company: "Roomies",
-    role: "Co-Founder & Lead Developer",
-    date: "Feb 2024 - 2025",
-    location: "New York, NY",
-    highlights: [
-      "Implemented cryptography techniques to secure sensitive user data",
-      "Developed consensus-driven AI framework inspired by Waze for household challenges",
-      "Created LLM-powered module for task aggregation and anonymous proposal submission",
-      "Built 'Task Transform' feature to demonstrate AI's practical value to non-technical users",
     ],
   },
   {
@@ -144,6 +124,16 @@ export const education: Education[] = [
 
 export const ideas: Idea[] = [
   {
+    slug: "daily-briefing-buddy",
+    title: "How I Built an AI Agent That 93% of My Company Actually Uses",
+    excerpt:
+      "Most enterprise AI tools die the same death: a flashy launch, then silence. Here's how a push-based design pattern broke that cycle — 46,000 conversations and counting.",
+    category: "Build Log",
+    readTime: "8 min read",
+    publishedAt: "2026-02-07",
+    featured: true,
+  },
+  {
     slug: "enterprise-ai-building-gap",
     title:
       "The Enterprise AI Building Gap: What 48 Hours With AI Tools Taught Me",
@@ -152,16 +142,6 @@ export const ideas: Idea[] = [
     category: "Build Log",
     readTime: "10 min read",
     publishedAt: "2026-02-21",
-    featured: true,
-  },
-  {
-    slug: "daily-briefing-buddy",
-    title: "How I Built an AI Agent That 93% of My Company Actually Uses",
-    excerpt:
-      "Most enterprise AI tools die the same death: a flashy launch, then silence. Here's how a push-based design pattern broke that cycle — 46,000 conversations and counting.",
-    category: "Build Log",
-    readTime: "8 min read",
-    publishedAt: "2026-02-07",
     featured: true,
   },
   {
@@ -175,15 +155,6 @@ export const ideas: Idea[] = [
     featured: true,
   },
   {
-    slug: "engineer-guide-to-wealth",
-    title: "The Engineer's Guide to Building Wealth",
-    excerpt:
-      "After landing a new role in NYC, I realized my income was just the input—what I do with it is the system. Here's the framework I'm using.",
-    category: "Finance",
-    readTime: "8 min read",
-    publishedAt: "2026-01-26",
-  },
-  {
     slug: "reverse-engineering-recruiter-search",
     title: "How to Get Found by Tech Recruiters on LinkedIn",
     excerpt:
@@ -191,7 +162,6 @@ export const ideas: Idea[] = [
     category: "Career",
     readTime: "7 min read",
     publishedAt: "2026-01-31",
-    featured: true,
   },
 ];
 

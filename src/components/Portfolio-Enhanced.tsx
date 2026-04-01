@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, Linkedin, Mail, Menu, X } from "lucide-react";
 import { HeroSection } from "@/components/HeroSection";
-import ParticlesBackground from "./ParticlesBackground";
 import {
   ProjectsSection,
   ExperienceSection,
@@ -57,7 +56,10 @@ const PortfolioEnhanced: React.FC = () => {
             const element = document.getElementById(section);
             if (element) {
               const rect = element.getBoundingClientRect();
-              return rect.top <= SECTION_DETECT_OFFSET && rect.bottom >= SECTION_DETECT_OFFSET;
+              return (
+                rect.top <= SECTION_DETECT_OFFSET &&
+                rect.bottom >= SECTION_DETECT_OFFSET
+              );
             }
             return false;
           });
@@ -95,8 +97,6 @@ const PortfolioEnhanced: React.FC = () => {
 
   return (
     <div className="relative min-h-screen">
-      <ParticlesBackground />
-
       {/* Navigation */}
       <motion.header
         className={`sticky top-0 z-50 transition-all duration-500 ${
@@ -240,7 +240,7 @@ const PortfolioEnhanced: React.FC = () => {
                     >
                       {link.label}
                     </motion.button>
-                  )
+                  ),
                 )}
               </nav>
             </motion.div>
@@ -250,10 +250,10 @@ const PortfolioEnhanced: React.FC = () => {
 
       {/* Page Sections */}
       <HeroSection />
+      <IdeasSection />
       <ProjectsSection />
       <ExperienceSection />
       <EducationSection />
-      <IdeasSection />
       <ContactSection />
 
       {/* Footer */}
@@ -261,7 +261,8 @@ const PortfolioEnhanced: React.FC = () => {
         <div className="section-container">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <p className="text-[var(--text-muted)] text-sm">
-              &copy; {new Date().getFullYear()} Ethan Sam. Crafted with precision.
+              &copy; {new Date().getFullYear()} Ethan Sam. Crafted with
+              precision.
             </p>
             <div className="flex items-center gap-4">
               {footerSocialLinks.map((link) => (

@@ -31,8 +31,10 @@ export const ProjectsSection: React.FC = () => {
           </div>
         )}
 
-        {/* Remaining projects — 2 column grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* Remaining projects */}
+        <div
+          className={`grid gap-8 ${rest.length > 1 ? "md:grid-cols-2" : "max-w-2xl"}`}
+        >
           {rest.map((project, index) => (
             <ProjectCard
               key={project.title}

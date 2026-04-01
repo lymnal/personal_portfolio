@@ -1,28 +1,25 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { Github, Linkedin, Lightbulb, ArrowDown } from 'lucide-react';
-import { CipherText } from '@/components/ui/CipherText';
+import React from "react";
+import { motion } from "framer-motion";
+import { Github, Linkedin, Lightbulb, ArrowDown } from "lucide-react";
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/esamnyu", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com/in/ethansam", label: "LinkedIn" },
+  {
+    icon: Linkedin,
+    href: "https://linkedin.com/in/ethansam",
+    label: "LinkedIn",
+  },
   { icon: Lightbulb, href: "/ideas", label: "Ideas" },
 ];
 
-const roles = [
-  "AI Security Engineer",
-  "Full-Stack Developer",
-];
-
-// Faster stagger animation for compact hero
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.12,
       delayChildren: 0.2,
     },
   },
@@ -45,121 +42,51 @@ const itemVariants = {
   },
 };
 
-const RoleCycler: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % roles.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="relative h-[1.5em] overflow-hidden">
-      {roles.map((role, index) => (
-        <motion.span
-          key={role}
-          className="absolute inset-0 flex items-center justify-center"
-          initial={false}
-          animate={{
-            y: index === currentIndex ? 0 : index < currentIndex ? -40 : 40,
-            opacity: index === currentIndex ? 1 : 0,
-            filter: index === currentIndex ? "blur(0px)" : "blur(4px)",
-          }}
-          transition={{
-            duration: 0.6,
-            ease: [0.16, 1, 0.3, 1],
-          }}
-        >
-          {role}
-        </motion.span>
-      ))}
-    </div>
-  );
-};
-
 export const HeroSection: React.FC = () => {
-  const scrollToProjects = () => {
-    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToContent = () => {
+    document.getElementById("ideas")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section
       id="home"
-      className="min-h-[70vh] flex items-center justify-center relative overflow-hidden pt-8"
+      className="min-h-[80vh] flex items-center justify-center relative overflow-hidden"
     >
-      {/* Subtle ambient glow - top */}
-      <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px]"
-          style={{
-            background: 'radial-gradient(ellipse at center, rgba(201, 169, 98, 0.05) 0%, transparent 70%)',
-          }}
-          animate={{
-            scale: [1, 1.1, 1],
-            opacity: [0.5, 0.7, 0.5],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      </div>
-
-      {/* Content */}
       <motion.div
         className="section-container relative z-10 text-center"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {/* Main title - smaller for compact hero */}
+        {/* Name — static, confident */}
         <motion.h1
-          className="hero-title font-display font-bold mb-4 text-gradient-gold"
+          className="hero-title font-display font-bold mb-5"
           variants={itemVariants}
         >
-          <CipherText text="Ethan Sam" />
+          Ethan Sam
         </motion.h1>
 
-        {/* Role cycler */}
+        {/* Single identity — no cycling */}
         <motion.div
           variants={itemVariants}
-          className="text-xl md:text-2xl text-[var(--accent-warm)] font-body mb-6"
+          className="text-xl md:text-2xl text-[var(--accent-warm)] font-body mb-8 tracking-wide"
         >
-          <RoleCycler />
+          AI Security Engineer
         </motion.div>
 
-        {/* Description - concise */}
+        {/* Elevated tagline — the brand line */}
         <motion.p
           variants={itemVariants}
-          className="text-[var(--text-secondary)] text-base md:text-lg max-w-xl mx-auto mb-3 leading-relaxed"
-          style={{ fontFamily: 'var(--font-body)' }}
+          className="text-[var(--text-secondary)] text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-body"
         >
           Building secure AI systems and using AI to break insecure ones.
         </motion.p>
 
-        {/* Availability signal */}
-        <motion.div
-          variants={itemVariants}
-          className="flex items-center justify-center gap-2 mb-8"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
-          </span>
-          <span className="text-[var(--text-muted)] text-xs font-body tracking-wide">
-            Open to opportunities
-          </span>
-        </motion.div>
-
-        {/* Social links + CTA in one row */}
+        {/* Social links + CTA */}
         <motion.div
           variants={itemVariants}
           className="flex flex-col sm:flex-row items-center justify-center gap-6"
         >
-          {/* Social links */}
           <div className="flex items-center gap-3">
             {socialLinks.map((link) => (
               <a
@@ -167,22 +94,25 @@ export const HeroSection: React.FC = () => {
                 href={link.href}
                 className="w-10 h-10 rounded-full border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-secondary)] hover:text-[var(--accent-gold)] hover:border-[var(--accent-gold)] transition-colors duration-300"
                 aria-label={link.label}
-                target={link.href.startsWith('http') ? '_blank' : undefined}
-                rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                target={link.href.startsWith("http") ? "_blank" : undefined}
+                rel={
+                  link.href.startsWith("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
               >
                 <link.icon className="w-4 h-4" />
               </a>
             ))}
           </div>
 
-          {/* CTA Button */}
           <motion.button
-            onClick={scrollToProjects}
+            onClick={scrollToContent}
             className="btn-primary inline-flex items-center gap-2 text-sm"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <span>View Projects</span>
+            <span>See My Work</span>
             <ArrowDown className="w-4 h-4" />
           </motion.button>
         </motion.div>
