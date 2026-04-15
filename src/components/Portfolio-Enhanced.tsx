@@ -250,10 +250,10 @@ const PortfolioEnhanced: React.FC = () => {
 
       {/* Page Sections */}
       <HeroSection />
-      <IdeasSection />
       <ProjectsSection />
       <ExperienceSection />
       <EducationSection />
+      <IdeasSection />
       <ContactSection />
 
       {/* Footer */}

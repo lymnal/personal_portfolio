@@ -3,14 +3,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Lightbulb, ArrowDown } from "lucide-react";
+import { socialLinks } from "@/lib/data";
 
-const socialLinks = [
-  { icon: Github, href: "https://github.com/esamnyu", label: "GitHub" },
-  {
-    icon: Linkedin,
-    href: "https://linkedin.com/in/ethansam",
-    label: "LinkedIn",
-  },
+const heroLinks = [
+  { icon: Github, href: socialLinks.github, label: "GitHub" },
+  { icon: Linkedin, href: socialLinks.linkedin, label: "LinkedIn" },
   { icon: Lightbulb, href: "/ideas", label: "Ideas" },
 ];
 
@@ -44,7 +41,7 @@ const itemVariants = {
 
 export const HeroSection: React.FC = () => {
   const scrollToContent = () => {
-    document.getElementById("ideas")?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -88,7 +85,7 @@ export const HeroSection: React.FC = () => {
           className="flex flex-col sm:flex-row items-center justify-center gap-6"
         >
           <div className="flex items-center gap-3">
-            {socialLinks.map((link) => (
+            {heroLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}

@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Syne, Outfit } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import SmoothScroll from "@/components/SmoothScroll";
 import { siteConfig, socialLinks } from "@/lib/data";
 
@@ -44,6 +45,9 @@ export const metadata: Metadata = {
     title: siteConfig.title,
     description: siteConfig.description,
     creator: "@ethansam",
+  },
+  alternates: {
+    canonical: siteConfig.url,
   },
   robots: {
     index: true,
@@ -116,11 +120,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`h-full ${syne.variable} ${outfit.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={`h-full ${syne.variable} ${outfit.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -130,6 +130,7 @@ export default function RootLayout({
       <body className="min-h-screen">
         <SmoothScroll />
         {children}
+        <Analytics />
       </body>
     </html>
   );

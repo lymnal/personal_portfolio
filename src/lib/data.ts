@@ -9,10 +9,10 @@ import {
 
 export const navLinks: NavLink[] = [
   { id: "home", label: "Home" },
-  { id: "ideas", label: "Ideas", href: "/ideas" },
   { id: "projects", label: "Projects" },
   { id: "experience", label: "Experience" },
   { id: "education", label: "Education" },
+  { id: "ideas", label: "Ideas", href: "/ideas" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -43,6 +43,22 @@ export const projects: Project[] = [
     metrics: "Built proactively — secured the role before the first interview",
     github: "https://github.com/esamnyu/slackbot",
     demo: "https://slackbot-puce.vercel.app",
+  },
+  {
+    title: "Weather Edge",
+    description:
+      "A quantitative trading system that finds mispriced daily high temperature brackets on Kalshi prediction markets by fusing 194 AI and physics-based weather model forecasts against real-time market prices.",
+    tech: [
+      "Python",
+      "asyncio",
+      "Kalshi API",
+      "Open-Meteo",
+      "KDE (scipy)",
+      "Claude AI",
+    ],
+    metrics: "194 ensemble forecasts | 7 pre-trade risk guards | Live system",
+    demo: "/weather-edge",
+    tagline: "Quantitative weather prediction markets",
   },
 ];
 
